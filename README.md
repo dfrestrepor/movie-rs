@@ -9,13 +9,13 @@ python3 -m pip install --user -U -r requirements.txt
 
 ## Montaje de infraestructura
 1. creacion de key par (pares de claves) para EC2 en aws console.
-2. Asignar permisos : sudo chmod 0400 </path/to/my-key-pair.pem> (linux)
+2. Asignar permisos : sudo chmod 0400 </path/to/my-key-pair.pem> (linux, revisar si es necesario en windows)
 3. Despliegue de servicios: utiliza los archivios movie-rs.yml para configuración de servicios a utilizar 
  y movie-rs-param-dev.json contiene los pararametros, del directorio cloudformation, se ejecuta: 
  
     python3 ./scripts/create_cfn_stack.py --environment dev --ec2-key-name movie-rs-keypar
 
-4. Cargar datos a S3 : se debe poner la carpeta con los datos en el directorio raw data, ejceutar  
+4. Cargar datos a S3 : se debe poner la carpeta con los datos en el directorio raw data, ejecutar  
     
     python3 ./scripts/upload_apps_to_s3.py
     
