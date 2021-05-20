@@ -32,7 +32,7 @@ python3 -m pip install --user -U -r requirements.txt
 ## comandos útiles
 + listar buckets del proyecto  
 aws s3api list-buckets | jq -r '.Buckets[] | select(.Name | startswith("movie-sr-")).Name'
-+ Consultar tablas en catálogo de datos
++ Consultar tablas en catálogo de datos  
  aws glue get-tables --database movie_sr | jq -r '.TableList[] | select(.Name | startswith("raw_")).Name'
  
 + Revisar parámetros almencados en SSM:   
@@ -50,5 +50,7 @@ creaer acceso ssh ec2 para ip porpia export EMR_MASTER_SG_ID=$(aws ec2 describe-
 ## Referencia
 [Running PySpark Applications on Amazon EMR: Methods for Interacting with PySpark on Amazon Elastic MapReduce](https://garystafford.medium.com/running-pyspark-applications-on-amazon-emr-e536b7a865ca)
 
+
+conexion al cluster
 ssh -i ~/movie-key-ec2.pem -ND 8157 hadoop@ec2-54-164-202-23.compute-1.amazonaws.com
 python3 ./scripts/submit_spark_ssh.py --ec2-key-path /home/david/Descargas/movie-key-ec2.pem
